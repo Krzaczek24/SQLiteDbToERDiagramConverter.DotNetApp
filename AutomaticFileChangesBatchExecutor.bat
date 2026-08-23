@@ -1,0 +1,1 @@
+AutomaticFileChangesBatchExecutor.exe --Observe RpgAdventureGame.SQLite.db --Batch RpgAdventureGame.SQLite.ERDiagram.GenerateERD.bat

@@ -1,0 +1,59 @@
+erDiagram
+
+    Area {
+        INTEGER Id PK
+        TEXT Name UK
+    }
+
+    Path {
+        INTEGER Id PK
+        INTEGER StartAreaId FK
+        INTEGER EndAreaId FK
+        NUMERIC Distance
+        INTEGER DangerLevel
+        NUMERIC DangerProbability
+    }
+
+    Route {
+        INTEGER Id PK
+        TEXT Name UK
+    }
+
+    RoutePath {
+        INTEGER Id PK
+        INTEGER RouteId FK
+        INTEGER Sequence
+        INTEGER PathId FK
+    }
+
+    Character {
+        INTEGER Id PK
+        TEXT Name UK
+        INTEGER Level
+        INTEGER Experience
+        INTEGER CurrentHealth
+        INTEGER MaxHealth
+        INTEGER CurrentAreaId FK
+    }
+
+    AreaEvent {
+        INTEGER Id PK
+        INTEGER AreaId FK
+        TEXT Timestamp
+        TEXT Description
+    }
+
+    CharacterEvent {
+        INTEGER Id PK
+        INTEGER CharacterId FK
+        TEXT Timestamp
+        TEXT Description
+    }
+
+    Area ||--o{ Path : "start area"
+    Area ||--o{ Path : "end area"
+    Route ||--o{ RoutePath : "route"
+    Path ||--o{ RoutePath : "path"
+    Area ||--o{ Character : "current area"
+    Area ||--o{ AreaEvent : "area"
+    Character ||--o{ CharacterEvent : "character"
